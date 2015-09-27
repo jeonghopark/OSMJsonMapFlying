@@ -28,5 +28,7 @@ public:
 
     vector< ofMesh > buildings;
     vector< ofMesh > roads;
+    
+    vector< ofPolyline > buildingsPolyline;
 
 };

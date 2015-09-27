@@ -23,6 +23,10 @@ void ofApp::setup(){
         ofMesh _m;
         _m.setMode(OF_PRIMITIVE_LINE_LOOP);
         
+        ofPolyline _pl;
+
+        _pl.begin();
+
         for (int j=0; j<_jsonBuilding.size(); j++) {
             
             ofxJSONElement _coordinateBuilding;
@@ -34,11 +38,20 @@ void ofApp::setup(){
             
             _m.addVertex(_v);
             _m.addColor( ofColor(255) );
+        
+            _pl.addVertex( _v );
+
         }
         
         buildings.push_back( _m );
+
+        _pl.end();
+        buildingsPolyline.push_back(_pl);
+        
     }
 
+    
+    
     ofxJSONElement _jsonRoads;
     _jsonRoads = _jsonMain["roads"]["features"];
     
@@ -128,7 +141,9 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+
 }
+
 
 //--------------------------------------------------------------
 void ofApp::draw(){
@@ -145,8 +160,21 @@ void ofApp::draw(){
     for (int i=0; i<buildings.size(); i++) {
         buildings[i].draw();
     }
+    
     for (int i=0; i<roads.size(); i++) {
         roads[i].draw();
+    }
+    
+    for (int i=0; i<buildingsPolyline.size(); i++) {
+        buildingsPolyline[i].draw();
+
+        ofBeginShape();
+        vector<ofPoint>& vertices = buildingsPolyline[i].getVertices();
+        for(int j = 0; j < vertices.size(); j++) {
+            ofVertex(vertices[j]);
+        }
+        ofEndShape();
+
     }
 
     
