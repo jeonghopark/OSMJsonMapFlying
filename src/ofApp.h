@@ -32,5 +32,9 @@ public:
     vector< ofMesh > roads;
     
     vector< ofPolyline > buildingsPolyline;
-
+    vector< ofPolyline > roadsPolyline;
+    
+    float roadMoving;
+    float roadMovingFactor;
+    
 };

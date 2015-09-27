@@ -57,12 +57,14 @@ void ofApp::setup(){
         
         string _multiString = _jsonRoads[i]["geometry"]["type"].asString();
         
+        ofMesh _m;
+        _m.setMode(OF_PRIMITIVE_LINE_STRIP);
+
+        ofPolyline _pl;
+
         if (_multiString != "MultiLineString") {
             
             _jsonRoad = _jsonRoads[i]["geometry"]["coordinates"];
-            ofMesh _m;
-            _m.setMode(OF_PRIMITIVE_LINE_STRIP);
-            
             
             for (int j=0; j<_jsonRoad.size(); j++) {
                 
@@ -75,16 +77,18 @@ void ofApp::setup(){
                 
                 _m.addVertex(_v);
                 _m.addColor( ofColor(255) );
+
+                _pl.addVertex(_v);
+                
             }
             
             roads.push_back( _m );
+            roadsPolyline.push_back( _pl );
+            
             
         } else {
             
             _jsonRoad = _jsonRoads[i]["geometry"]["coordinates"][0];
-            ofMesh _m;
-            _m.setMode(OF_PRIMITIVE_LINE_STRIP);
-            
             
             for (int j=0; j<_jsonRoad.size(); j++) {
                 
@@ -97,9 +101,13 @@ void ofApp::setup(){
                 
                 _m.addVertex(_v);
                 _m.addColor( ofColor(255) );
+
+                _pl.addVertex(_v);
+
             }
             
             roads.push_back( _m );
+            roadsPolyline.push_back( _pl );
             
         }
         
@@ -129,6 +137,8 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
+    roadMovingFactor = roadMovingFactor + 1;
+    roadMoving = sin( ofDegToRad(roadMovingFactor) ) * 0.5 + 0.5;
 }
 
 
@@ -158,10 +168,15 @@ void ofApp::draw(){
     ofPopStyle();
     
     
-    for (int i=0; i<roads.size(); i++) {
-        roads[i].draw();
+    for (int i=0; i<roadsPolyline.size(); i++) {
+        roadsPolyline[i].draw();
     }
-    
+
+    for (int i=0; i<roadsPolyline.size(); i++) {
+        ofDrawCircle(roadsPolyline[i].getPointAtPercent( roadMoving ) , 2);
+    }
+
+    cout << roadMoving << endl;
     
     ofPushStyle();
     ofSetColor(255, 180);
