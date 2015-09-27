@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #include "FeatureNode.h"
 
+#include "JsonLoader.h"
+
 #include "ofxJSON.h"
 
 class ofApp : public ofBaseApp{

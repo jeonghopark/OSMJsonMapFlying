@@ -1,17 +1,13 @@
 #include "ofApp.h"
-#include "JsonLoader.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    
-    //    ofSetLogLevel(OF_LOG_NOTICE);
-    //    ofSetDataPathRoot("../Resources/data/");
     
     JsonLoader jsonLoader = JsonLoader("vectorTile.json");
     rootNode = jsonLoader.loadNodeGraph();
     
     ofxJSONElement _jsonMain;
-    _jsonMain.open("vectorTile.json");
+    _jsonMain = jsonLoader.jsonRoot;
     
     ofxJSONElement _jsonBuildings;
     _jsonBuildings = _jsonMain["buildings"]["features"];
@@ -24,9 +20,9 @@ void ofApp::setup(){
         _m.setMode(OF_PRIMITIVE_LINE_LOOP);
         
         ofPolyline _pl;
-
+        
         _pl.begin();
-
+        
         for (int j=0; j<_jsonBuilding.size(); j++) {
             
             ofxJSONElement _coordinateBuilding;
@@ -38,18 +34,18 @@ void ofApp::setup(){
             
             _m.addVertex(_v);
             _m.addColor( ofColor(255) );
-        
+            
             _pl.addVertex( _v );
-
+            
         }
         
         buildings.push_back( _m );
-
+        
         _pl.end();
         buildingsPolyline.push_back(_pl);
         
     }
-
+    
     
     
     ofxJSONElement _jsonRoads;
@@ -72,9 +68,7 @@ void ofApp::setup(){
                 
                 ofxJSONElement _coordinateRoad;
                 _coordinateRoad = _jsonRoad[j];
-                //
-                //            cout << _coordinateRoad << endl;
-                
+
                 ofVec2f _v;
                 _v.x = jsonLoader.lon2x(_jsonRoad[j][0].asFloat()) - rootNode->getX();
                 _v.y = jsonLoader.lat2y(_jsonRoad[j][1].asFloat()) - rootNode->getY();
@@ -84,7 +78,7 @@ void ofApp::setup(){
             }
             
             roads.push_back( _m );
-
+            
         } else {
             
             _jsonRoad = _jsonRoads[i]["geometry"]["coordinates"][0];
@@ -96,8 +90,6 @@ void ofApp::setup(){
                 
                 ofxJSONElement _coordinateRoad;
                 _coordinateRoad = _jsonRoad[j];
-                //
-                //            cout << _coordinateRoad << endl;
                 
                 ofVec2f _v;
                 _v.x = jsonLoader.lon2x(_jsonRoad[j][0].asFloat()) - rootNode->getX();
@@ -108,40 +100,35 @@ void ofApp::setup(){
             }
             
             roads.push_back( _m );
-
+            
         }
         
     }
-
+    
     
     
     rootNode->setPosition(0, 0, 0);
-    //        rootNode->printPosition("");
     
-    // General graphics setup
     ofBackground(0, 0, 0);
     ofSetFrameRate(60);
     ofEnableDepthTest();
     
-    // Camera setup
     camera = ofEasyCam();
     camera.setPosition(rootNode->getGlobalPosition());
     camera.move(0, 0, 300);
     camera.setTarget(rootNode->getGlobalPosition());
     
-    // Lighting setup
     mainLight = ofLight();
     mainLight.setPointLight();
     mainLight.setGlobalPosition(-100, 0, 500);
     mainLight.setDiffuseColor(ofColor(35, 35, 35));
     mainLight.setSpecularColor(ofColor(170, 170, 170));
     
-    //    ofLog(OF_LOG_VERBOSE, "Camera at " + ofToString(camera.getX()) + ", " + ofToString(camera.getY()) + ", " + ofToString(camera.getZ()));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    
 }
 
 
@@ -152,38 +139,56 @@ void ofApp::draw(){
     
     camera.begin();
     
-//    mainLight.enable();
-    
-    //        rootNode->draw();
+    //    mainLight.enable();
     
     
     for (int i=0; i<buildings.size(); i++) {
         buildings[i].draw();
     }
+
+    ofPushStyle();
+    ofSetColor(255, 160);
+
+    for (int i=0; i<buildings.size(); i++) {
+        vector<ofVec3f> & _v = buildings[i].getVertices();
+        for (int j=0; j<_v.size(); j++) {
+            ofDrawLine( _v[j] - ofVec3f(0, 0, 0), _v[j] + ofVec3f(0, 0, 100) );
+        }
+    }
+    ofPopStyle();
+    
     
     for (int i=0; i<roads.size(); i++) {
         roads[i].draw();
     }
     
+    
+    ofPushStyle();
+    ofSetColor(255, 180);
     for (int i=0; i<buildingsPolyline.size(); i++) {
-        buildingsPolyline[i].draw();
 
+        buildingsPolyline[i].draw();
+        
         ofBeginShape();
-        vector<ofPoint>& vertices = buildingsPolyline[i].getVertices();
+        vector<ofVec3f>& vertices = buildingsPolyline[i].getVertices();
         for(int j = 0; j < vertices.size(); j++) {
             ofVertex(vertices[j]);
         }
         ofEndShape();
 
+        ofBeginShape();
+        vector<ofVec3f>& verticesUp = buildingsPolyline[i].getVertices();
+        for(int j = 0; j < verticesUp.size(); j++) {
+            ofVec3f _v = verticesUp[j] + ofVec3f(0, 0, 100);
+            ofVertex(_v);
+        }
+        ofEndShape();
     }
-
+    ofPopStyle();
     
-    //    buildings[0].draw();
-    //    buildings[1].draw();
     
-    //    ofDrawCircle(buildings[0].getVertex(0).x, buildings[0].getVertex(0).y, 30);
     
-//    mainLight.disable();
+    //    mainLight.disable();
     
     camera.end();
     
