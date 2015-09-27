@@ -7,7 +7,6 @@ void ofApp::setup(){
     //    ofSetLogLevel(OF_LOG_NOTICE);
     //    ofSetDataPathRoot("../Resources/data/");
     
-    // Load map objects from JSON file
     JsonLoader jsonLoader = JsonLoader("vectorTile.json");
     rootNode = jsonLoader.loadNodeGraph();
     
@@ -39,6 +38,69 @@ void ofApp::setup(){
         
         buildings.push_back( _m );
     }
+
+    ofxJSONElement _jsonRoads;
+    _jsonRoads = _jsonMain["roads"]["features"];
+    
+    for (int i=0; i<_jsonRoads.size(); i++) {
+        ofxJSONElement _jsonRoad;
+        
+        
+        string _multiString = _jsonRoads[i]["geometry"]["type"].asString();
+        
+        if (_multiString != "MultiLineString") {
+            
+            _jsonRoad = _jsonRoads[i]["geometry"]["coordinates"];
+            ofMesh _m;
+            _m.setMode(OF_PRIMITIVE_LINE_STRIP);
+            
+            
+            for (int j=0; j<_jsonRoad.size(); j++) {
+                
+                ofxJSONElement _coordinateRoad;
+                _coordinateRoad = _jsonRoad[j];
+                //
+                //            cout << _coordinateRoad << endl;
+                
+                ofVec2f _v;
+                _v.x = jsonLoader.lon2x(_jsonRoad[j][0].asFloat()) - rootNode->getX();
+                _v.y = jsonLoader.lat2y(_jsonRoad[j][1].asFloat()) - rootNode->getY();
+                
+                _m.addVertex(_v);
+                _m.addColor( ofColor(255) );
+            }
+            
+            roads.push_back( _m );
+
+        } else {
+            
+            _jsonRoad = _jsonRoads[i]["geometry"]["coordinates"][0];
+            ofMesh _m;
+            _m.setMode(OF_PRIMITIVE_LINE_STRIP);
+            
+            
+            for (int j=0; j<_jsonRoad.size(); j++) {
+                
+                ofxJSONElement _coordinateRoad;
+                _coordinateRoad = _jsonRoad[j];
+                //
+                //            cout << _coordinateRoad << endl;
+                
+                ofVec2f _v;
+                _v.x = jsonLoader.lon2x(_jsonRoad[j][0].asFloat()) - rootNode->getX();
+                _v.y = jsonLoader.lat2y(_jsonRoad[j][1].asFloat()) - rootNode->getY();
+                
+                _m.addVertex(_v);
+                _m.addColor( ofColor(255) );
+            }
+            
+            roads.push_back( _m );
+
+        }
+        
+    }
+
+    
     
     rootNode->setPosition(0, 0, 0);
     //        rootNode->printPosition("");
@@ -83,7 +145,10 @@ void ofApp::draw(){
     for (int i=0; i<buildings.size(); i++) {
         buildings[i].draw();
     }
-    ofPopMatrix();
+    for (int i=0; i<roads.size(); i++) {
+        roads[i].draw();
+    }
+
     
     //    buildings[0].draw();
     //    buildings[1].draw();

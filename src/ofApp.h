@@ -27,5 +27,6 @@ public:
     ofLight mainLight;
 
     vector< ofMesh > buildings;
+    vector< ofMesh > roads;
 
 };
