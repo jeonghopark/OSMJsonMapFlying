@@ -9,11 +9,13 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    JsonLoader jsonLoader = JsonLoader("vectorTile_16-33977-22293.json");
-    rootNode = jsonLoader.loadNodeGraph();
+    FeatureNode* _rootNode_33975_22294;
+
+    JsonLoader _jsonLoader_33975_22294 = JsonLoader("vectorTile_16_33975_22294.json");
+    _rootNode_33975_22294 = _jsonLoader_33975_22294.loadNodeGraph();
     
     ofxJSONElement _jsonMain;
-    _jsonMain = jsonLoader.jsonRoot;
+    _jsonMain = _jsonLoader_33975_22294.jsonRoot;
     
     ofxJSONElement _jsonBuildings;
     _jsonBuildings = _jsonMain["buildings"]["features"];
@@ -36,8 +38,8 @@ void ofApp::setup(){
             _coordinateBuilding = _jsonBuilding[j];
             
             ofVec2f _v;
-            _v.x = jsonLoader.lon2x(_coordinateBuilding[0].asFloat()) - rootNode->getX();
-            _v.y = jsonLoader.lat2y(_coordinateBuilding[1].asFloat()) - rootNode->getY();
+            _v.x = _jsonLoader_33975_22294.lon2x(_coordinateBuilding[0].asFloat()) - _rootNode_33975_22294->getX();
+            _v.y = _jsonLoader_33975_22294.lat2y(_coordinateBuilding[1].asFloat()) - _rootNode_33975_22294->getY();
 
             _m.addVertex(_v);
             _m.addColor( ofColor(255) );
@@ -47,10 +49,10 @@ void ofApp::setup(){
             cout << _v << endl;
         }
         
-        buildings.push_back( _m );
+        buildings_33975_22294.push_back( _m );
         
         _pl.end();
-        buildingsPolyline.push_back(_pl);
+        buildingsPolyline_33975_22294.push_back(_pl);
         
     }
     
@@ -80,8 +82,8 @@ void ofApp::setup(){
                 _coordinateRoad = _jsonRoad[j];
 
                 ofVec2f _v;
-                _v.x = jsonLoader.lon2x(_jsonRoad[j][0].asFloat()) - rootNode->getX();
-                _v.y = jsonLoader.lat2y(_jsonRoad[j][1].asFloat()) - rootNode->getY();
+                _v.x = _jsonLoader_33975_22294.lon2x(_jsonRoad[j][0].asFloat()) - _rootNode_33975_22294->getX();
+                _v.y = _jsonLoader_33975_22294.lat2y(_jsonRoad[j][1].asFloat()) - _rootNode_33975_22294->getY();
                 
                 _m.addVertex(_v);
                 _m.addColor( ofColor(255) );
@@ -90,8 +92,8 @@ void ofApp::setup(){
                 
             }
             
-            roads.push_back( _m );
-            roadsPolyline.push_back( _pl );
+            roads_33975_22294.push_back( _m );
+            roadsPolyline_33975_22294.push_back( _pl );
             
             
         } else {
@@ -104,8 +106,8 @@ void ofApp::setup(){
                 _coordinateRoad = _jsonRoad[j];
                 
                 ofVec2f _v;
-                _v.x = jsonLoader.lon2x(_jsonRoad[j][0].asFloat()) - rootNode->getX();
-                _v.y = jsonLoader.lat2y(_jsonRoad[j][1].asFloat()) - rootNode->getY();
+                _v.x = _jsonLoader_33975_22294.lon2x(_jsonRoad[j][0].asFloat()) - _rootNode_33975_22294->getX();
+                _v.y = _jsonLoader_33975_22294.lat2y(_jsonRoad[j][1].asFloat()) - _rootNode_33975_22294->getY();
                 
                 _m.addVertex(_v);
                 _m.addColor( ofColor(255) );
@@ -114,8 +116,8 @@ void ofApp::setup(){
 
             }
             
-            roads.push_back( _m );
-            roadsPolyline.push_back( _pl );
+            roads_33975_22294.push_back( _m );
+            roadsPolyline_33975_22294.push_back( _pl );
             
         }
         
@@ -123,17 +125,17 @@ void ofApp::setup(){
     
     
     
-    rootNode->setPosition(0, 0, 0);
-    rootNode->printPosition("");
+    _rootNode_33975_22294->setPosition(0, 0, 0);
+    _rootNode_33975_22294->printPosition("");
     
     ofBackground(0, 0, 0);
     ofSetFrameRate(60);
     ofEnableDepthTest();
     
     camera = ofEasyCam();
-    camera.setPosition(rootNode->getGlobalPosition());
+    camera.setPosition(_rootNode_33975_22294->getGlobalPosition());
     camera.move(0, 0, 300);
-    camera.setTarget(rootNode->getGlobalPosition());
+    camera.setTarget(_rootNode_33975_22294->getGlobalPosition());
     
     mainLight = ofLight();
     mainLight.setPointLight();
@@ -146,8 +148,8 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    roadMovingFactor = roadMovingFactor + 1;
-    roadMoving = sin( ofDegToRad(roadMovingFactor) ) * 0.5 + 0.5;
+    roadMovingFactor_33975_22294 = roadMovingFactor_33975_22294 + 1;
+    roadMoving_33975_22294 = sin( ofDegToRad(roadMovingFactor_33975_22294) ) * 0.5 + 0.5;
 }
 
 
@@ -161,15 +163,15 @@ void ofApp::draw(){
     //    mainLight.enable();
     
     
-    for (int i=0; i<buildings.size(); i++) {
-        buildings[i].draw();
+    for (int i=0; i<buildings_33975_22294.size(); i++) {
+        buildings_33975_22294[i].draw();
     }
 
     ofPushStyle();
     ofSetColor(255, 160);
 
-    for (int i=0; i<buildings.size(); i++) {
-        vector<ofVec3f> & _v = buildings[i].getVertices();
+    for (int i=0; i<buildings_33975_22294.size(); i++) {
+        vector<ofVec3f> & _v = buildings_33975_22294[i].getVertices();
         for (int j=0; j<_v.size(); j++) {
             ofDrawLine( _v[j] - ofVec3f(0, 0, 0), _v[j] + ofVec3f(0, 0, 100) );
         }
@@ -177,29 +179,29 @@ void ofApp::draw(){
     ofPopStyle();
     
     
-    for (int i=0; i<roadsPolyline.size(); i++) {
-        roadsPolyline[i].draw();
+    for (int i=0; i<roadsPolyline_33975_22294.size(); i++) {
+        roadsPolyline_33975_22294[i].draw();
     }
 
-    for (int i=0; i<roadsPolyline.size(); i++) {
-        ofDrawCircle(roadsPolyline[i].getPointAtPercent( roadMoving ) , 2);
+    for (int i=0; i<roadsPolyline_33975_22294.size(); i++) {
+        ofDrawCircle(roadsPolyline_33975_22294[i].getPointAtPercent( roadMoving_33975_22294 ) , 2);
     }
     
     ofPushStyle();
     ofSetColor(255, 180);
-    for (int i=0; i<buildingsPolyline.size(); i++) {
+    for (int i=0; i<buildingsPolyline_33975_22294.size(); i++) {
 
-        buildingsPolyline[i].draw();
+        buildingsPolyline_33975_22294[i].draw();
         
         ofBeginShape();
-        vector<ofVec3f>& vertices = buildingsPolyline[i].getVertices();
+        vector<ofVec3f>& vertices = buildingsPolyline_33975_22294[i].getVertices();
         for(int j = 0; j < vertices.size(); j++) {
             ofVertex(vertices[j]);
         }
         ofEndShape();
 
         ofBeginShape();
-        vector<ofVec3f>& verticesUp = buildingsPolyline[i].getVertices();
+        vector<ofVec3f>& verticesUp = buildingsPolyline_33975_22294[i].getVertices();
         for(int j = 0; j < verticesUp.size(); j++) {
             ofVec3f _v = verticesUp[j] + ofVec3f(0, 0, 100);
             ofVertex(_v);

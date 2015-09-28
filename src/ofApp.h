@@ -24,17 +24,16 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    FeatureNode* rootNode;
     ofEasyCam camera;
     ofLight mainLight;
 
-    vector< ofMesh > buildings;
-    vector< ofMesh > roads;
+    vector< ofMesh > buildings_33975_22294;
+    vector< ofMesh > roads_33975_22294;
     
-    vector< ofPolyline > buildingsPolyline;
-    vector< ofPolyline > roadsPolyline;
+    vector< ofPolyline > buildingsPolyline_33975_22294;
+    vector< ofPolyline > roadsPolyline_33975_22294;
     
-    float roadMoving;
-    float roadMovingFactor;
+    float roadMoving_33975_22294;
+    float roadMovingFactor_33975_22294;
     
 };
