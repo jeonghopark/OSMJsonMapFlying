@@ -1,9 +1,15 @@
+// http://vector.mapzen.com/osm/all/16/33975/22294.json
+
+// http://www.maptiler.org/google-maps-coordinates-tile-bounds-projection/
+
+
+
 #include "ofApp.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    JsonLoader jsonLoader = JsonLoader("vectorTile.json");
+    JsonLoader jsonLoader = JsonLoader("vectorTile_16-33977-22293.json");
     rootNode = jsonLoader.loadNodeGraph();
     
     ofxJSONElement _jsonMain;
@@ -11,6 +17,7 @@ void ofApp::setup(){
     
     ofxJSONElement _jsonBuildings;
     _jsonBuildings = _jsonMain["buildings"]["features"];
+    
     
     for (int i=0; i<_jsonBuildings.size(); i++) {
         ofxJSONElement _jsonBuilding;
@@ -31,12 +38,13 @@ void ofApp::setup(){
             ofVec2f _v;
             _v.x = jsonLoader.lon2x(_coordinateBuilding[0].asFloat()) - rootNode->getX();
             _v.y = jsonLoader.lat2y(_coordinateBuilding[1].asFloat()) - rootNode->getY();
-            
+
             _m.addVertex(_v);
             _m.addColor( ofColor(255) );
             
             _pl.addVertex( _v );
             
+            cout << _v << endl;
         }
         
         buildings.push_back( _m );
@@ -116,6 +124,7 @@ void ofApp::setup(){
     
     
     rootNode->setPosition(0, 0, 0);
+    rootNode->printPosition("");
     
     ofBackground(0, 0, 0);
     ofSetFrameRate(60);
@@ -175,8 +184,6 @@ void ofApp::draw(){
     for (int i=0; i<roadsPolyline.size(); i++) {
         ofDrawCircle(roadsPolyline[i].getPointAtPercent( roadMoving ) , 2);
     }
-
-    cout << roadMoving << endl;
     
     ofPushStyle();
     ofSetColor(255, 180);

@@ -27,31 +27,28 @@ FeatureNode* JsonLoader::loadNodeGraph() {
     
     ofLog(OF_LOG_VERBOSE, "Loading Layers:");
     
-    std::string layerNames[5] = {
+    std::string layerNames[4] = {
         "buildings",
         "earth",
         "landuse",
-        "roads",
-        "water"
+        "roads"
     };
     
-    ofColor layerColors[5] = {
+    ofColor layerColors[4] = {
         ofColor::moccasin,
         ofColor::lawnGreen,
         ofColor::khaki,
-        ofColor::ivory,
-        ofColor::deepSkyBlue
+        ofColor::ivory
     };
     
-    float layerHeights[5] = {
+    float layerHeights[4] = {
         0.5f,
         0.2f,
         0.3f,
-        0.4f,
-        0.0f
+        0.4f
     };
     
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 4; i++) {
         layerColor = layerColors[i];
         FeatureCollectionNode* newLayer = parseFeatureCollectionNode(jsonRoot[layerNames[i]]);
         newLayer->move(0, 0, layerHeights[i]);
