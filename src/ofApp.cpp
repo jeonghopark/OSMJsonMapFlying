@@ -13,6 +13,8 @@ void ofApp::setup(){
     ofSetFrameRate(60);
     ofEnableDepthTest();
     
+    originArchBase.load("Fassade IF10 - white_1280x800.png");
+
     buildingsMesh_top = buildingsMesh("vectorTile_16_33975_22294.json");
     roadsPolyline_top = roadsPolyline("vectorTile_16_33975_22294.json");
 
@@ -27,6 +29,9 @@ void ofApp::setup(){
 
     buildingsMesh_back = buildingsMesh("vectorTile_16_33975_22293.json");
     roadsPolyline_back = roadsPolyline("vectorTile_16_33975_22293.json");
+
+    buildingsMesh_bottom = buildingsMesh("vectorTile_16_33975_22296.json");
+    roadsPolyline_bottom = roadsPolyline("vectorTile_16_33975_22296.json");
 
     
     
@@ -47,7 +52,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    roadMovingFactor_top = roadMovingFactor_top + 1;
+    roadMovingFactor_top = roadMovingFactor_top + 4;
     roadMoving_top = sin( ofDegToRad(roadMovingFactor_top) ) * 0.5 + 0.5;
 }
 
@@ -57,36 +62,64 @@ void ofApp::draw(){
     
     //    ofEnableLighting();
     
+
     camera.begin();
     
     //    mainLight.enable();
     
+    ofVec3f _offSetPosition = ofVec3f(540, 540, 540);
     
-    drawBuildingsMesh(buildingsMesh_top, ofVec3f(0, 0, 0), ofVec3f(0, 0, 0));
+    drawBuildingsMesh(buildingsMesh_top, ofVec3f(0, 0, _offSetPosition.z), ofVec3f(0, 0, 0));
+    drawBuildingsMesh(buildingsMesh_left, ofVec3f(-_offSetPosition.x, 0, 0), ofVec3f(0, 90, 0));
+    drawBuildingsMesh(buildingsMesh_right, ofVec3f(_offSetPosition.x, 0, 0), ofVec3f(0, -90, 0));
+    drawBuildingsMesh(buildingsMesh_front, ofVec3f(0, _offSetPosition.y, 0), ofVec3f(90, 0, 0));
+    drawBuildingsMesh(buildingsMesh_back, ofVec3f(0, -_offSetPosition.y, 0), ofVec3f(-90, 0, 0));
+    drawBuildingsMesh(buildingsMesh_bottom, ofVec3f(0, 0, -_offSetPosition.z), ofVec3f(180, 0, 0));
 
-    drawBuildingsMesh(buildingsMesh_left, ofVec3f(-540, 0, -270), ofVec3f(0, 90, 0));
-
-    drawBuildingsMesh(buildingsMesh_right, ofVec3f(540, 0, -270), ofVec3f(0, -90, 0));
-
-    drawBuildingsMesh(buildingsMesh_front, ofVec3f(0, 540, -270), ofVec3f(90, 0, 0));
-
-    drawBuildingsMesh(buildingsMesh_back, ofVec3f(0, -540, -270), ofVec3f(-90, 0, 0));
-
-    
-    for (int i=0; i<roadsPolyline_top.size(); i++) {
-        roadsPolyline_top[i].draw();
-    }
-
-    for (int i=0; i<roadsPolyline_top.size(); i++) {
-        ofDrawCircle(roadsPolyline_top[i].getPointAtPercent( roadMoving_top ) , 2);
-    }
+    drawRoadPolyLineMoving(roadsPolyline_top, ofVec3f(0, 0, _offSetPosition.z), ofVec3f(0, 0, 0));
+    drawRoadPolyLineMoving(roadsPolyline_left, ofVec3f(-_offSetPosition.x, 0, 0), ofVec3f(0, 90, 0));
+    drawRoadPolyLineMoving(roadsPolyline_right, ofVec3f(_offSetPosition.x, 0, 0), ofVec3f(0, -90, 0));
+    drawRoadPolyLineMoving(roadsPolyline_front, ofVec3f(0, _offSetPosition.y, 0), ofVec3f(90, 0, 0));
+    drawRoadPolyLineMoving(roadsPolyline_back, ofVec3f(0, -_offSetPosition.y, 0), ofVec3f(-90, 0, 0));
+    drawRoadPolyLineMoving(roadsPolyline_bottom, ofVec3f(0, 0, -_offSetPosition.z), ofVec3f(180, 0, 0));
     
     
     //    mainLight.disable();
     
+
+    
+
+    
     camera.end();
     
     //    ofDisableLighting();
+    
+
+//    drawEdgeShape();
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::drawEdgeShape(){
+    
+    ofPushStyle();
+    
+//    ofDisableAlphaBlending();
+    
+    ofPushStyle();
+    
+//    ofSetColor(255, 255);
+    originArchBase.draw(0, 400-305);
+    
+    ofPopStyle();
+
+    ofSetColor(0);
+    ofDrawRectangle( 0, 0, ofGetWidth(), 400-305 );
+    ofDrawRectangle( 0, 400-305 + 610, ofGetWidth(), 400-305 );
+    
+//    ofEnableAlphaBlending();
+    
+    ofPopStyle();
     
 }
 
@@ -101,13 +134,17 @@ void ofApp::drawBuildingsMesh(vector< ofMesh > _mesh, ofVec3f _position, ofVec3f
     ofRotateY(_rotation.y);
     ofRotateZ(_rotation.z);
     
+    ofPushStyle();
+    ofSetColor(255, 80);
+
+//    for (int i=0; i<_mesh.size(); i++) {
+//        _mesh[i].draw();
+//    }
     
-    for (int i=0; i<_mesh.size(); i++) {
-        _mesh[i].draw();
-    }
+    ofPopStyle();
     
     ofPushStyle();
-    ofSetColor(255, 160);
+    ofSetColor(255, 80);
     
     for (int i=0; i<_mesh.size(); i++) {
         vector<ofVec3f> & _v = _mesh[i].getVertices();
@@ -131,11 +168,42 @@ void ofApp::drawBuildingsMesh(vector< ofMesh > _mesh, ofVec3f _position, ofVec3f
         ofEndShape();
         
     }
+    
+    ofPopMatrix();
+
+}
+
+
+//--------------------------------------------------------------
+void ofApp::drawRoadPolyLineMoving(vector< ofPolyline > _ofPolyline, ofVec3f _position, ofVec3f _rotation){
+    
+    ofPushMatrix();
+    
+    ofTranslate( _position );
+    
+    ofRotateX(_rotation.x);
+    ofRotateY(_rotation.y);
+    ofRotateZ(_rotation.z);
+    
+    
+    
+    ofPushStyle();
+    ofSetColor(255, 220);
+
+    for (int i=0; i<_ofPolyline.size(); i++) {
+        _ofPolyline[i].draw();
+    }
+    
+    for (int i=0; i<_ofPolyline.size(); i++) {
+        ofDrawCircle(_ofPolyline[i].getPointAtPercent( roadMoving_top ) , 2);
+    }
+    
+
     ofPopStyle();
     
     
     ofPopMatrix();
-
+    
 }
 
 

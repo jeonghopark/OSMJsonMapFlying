@@ -42,6 +42,9 @@ public:
     vector< ofMesh > buildingsMesh_back;
     vector< ofMesh > roads_back;
 
+    vector< ofMesh > buildingsMesh_bottom;
+    vector< ofMesh > roads_bottom;
+
     vector< ofPolyline > buildingsPolyline_top;
     vector< ofPolyline > roadsPolyline_top;
 
@@ -57,6 +60,10 @@ public:
     vector< ofPolyline > buildingsPolyline_back;
     vector< ofPolyline > roadsPolyline_back;
 
+    vector< ofPolyline > buildingsPolyline_bottom;
+    vector< ofPolyline > roadsPolyline_bottom;
+
+    
     float roadMoving_top;
     float roadMovingFactor_top;
 
@@ -67,5 +74,9 @@ public:
     vector< ofPolyline > roadsPolyline(string _fileName );
     
     void drawBuildingsMesh(vector< ofMesh > _mesh, ofVec3f _position, ofVec3f _rotation);
-    
+    void drawRoadPolyLineMoving(vector< ofPolyline > _polyline, ofVec3f _position, ofVec3f _rotation);
+  
+    void drawEdgeShape();
+    ofImage originArchBase;
+
 };
