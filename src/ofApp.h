@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "GuiApp.h"
+#include "BaseArch.h"
+
 #include "FeatureNode.h"
 
 #include "JsonLoader.h"
@@ -24,6 +27,11 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    
+    shared_ptr<GuiApp> gui;
+    
+    BaseArch baseArch;
+    
     ofEasyCam camera;
     ofLight mainLight;
     
@@ -41,5 +49,9 @@ public:
     double x2lon(double x) { return ofRadToDeg(x / R_EARTH); }
     double lat2y(double lat) { return R_EARTH * log(tan(PI / 4 + ofDegToRad(lat) / 2)); }
     double lon2x(double lon) { return ofDegToRad(lon) * R_EARTH; }
+    
+    
+    float mainOffSetXPos, mainOffSetYPos;
+
     
 };
