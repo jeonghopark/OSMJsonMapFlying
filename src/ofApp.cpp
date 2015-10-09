@@ -9,6 +9,16 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    ofBackground(0, 0, 0);
+    ofSetFrameRate(60);
+    ofEnableDepthTest();
+
+    
+    cam.setNearClip(0.0001f);
+    cam.setFarClip(10000.0f);
+    cam.toggleControl();
+
+    
     mainOffSetXPos = (ofGetWidth() - (baseArch.fassadeCorner[0].x + baseArch.fassadeCorner[1].x)) * 0.5;
     mainOffSetYPos = (ofGetHeight() - (baseArch.fassadeCorner[0].y + baseArch.fassadeCorner[3].y)) * 0.5;
     baseArch.mainOffSetXPos = mainOffSetXPos;
@@ -158,9 +168,6 @@ void ofApp::setup(){
     _rootNode_33975_22294->setPosition(0, 0, 0);
     _rootNode_33975_22294->printPosition("");
     
-    ofBackground(0, 0, 0);
-    ofSetFrameRate(60);
-    ofEnableDepthTest();
     
     camera = ofEasyCam();
     camera.setPosition(_rootNode_33975_22294->getGlobalPosition());
@@ -178,6 +185,19 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
+    auto pushed = in.keyPushed;
+    auto holded = in.keyHolded;
+    auto pulled = in.keyPulled;
+    
+    if( pushed[GLFW_KEY_LEFT_SHIFT] ) cam.movespeed = 7.0f;
+    if( pulled[GLFW_KEY_LEFT_SHIFT] ) cam.movespeed = 1.0f;
+    
+    if( pushed[GLFW_MOUSE_BUTTON_LEFT] ) paint.push_back( ofPolyline() );
+    if( holded[GLFW_MOUSE_BUTTON_LEFT] ) paint.back().addVertex( cam.getPosition() + (cam.getLookAtDir() * 50.0f) );
+    
+    if( pushed[GLFW_MOUSE_BUTTON_RIGHT] ) cam.toggleControl();
+
+    
     roadMovingFactor_33975_22294 = roadMovingFactor_33975_22294 + 1;
     roadMoving_33975_22294 = sin( ofDegToRad(roadMovingFactor_33975_22294) ) * 0.5 + 0.5;
 }
@@ -188,7 +208,7 @@ void ofApp::draw(){
     
     //    ofEnableLighting();
     
-    camera.begin();
+    cam.begin();
     
     //    mainLight.enable();
     
@@ -247,7 +267,7 @@ void ofApp::draw(){
     
     //    mainLight.disable();
     
-    camera.end();
+    cam.end();
     
     //    ofDisableLighting();
     

@@ -4,6 +4,10 @@
 #include "GuiApp.h"
 #include "BaseArch.h"
 
+#include "ofxImmediateModeInput.h"
+#include "ofxFirstPersonCamera.h"
+
+
 #include "FeatureNode.h"
 
 #include "JsonLoader.h"
@@ -53,5 +57,10 @@ public:
     
     float mainOffSetXPos, mainOffSetYPos;
 
-    
+
+    // Flying
+    ofxImmediateModeInput in;
+    ofxFirstPersonCamera cam;
+    vector<ofPolyline> paint;
+
 };

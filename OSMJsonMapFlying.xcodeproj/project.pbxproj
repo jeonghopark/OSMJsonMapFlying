@@ -23,6 +23,8 @@
 		A85DD61D1BC67198008D89EB /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A85DD60F1BC67198008D89EB /* ofxSlider.cpp */; settings = {ASSET_TAGS = (); }; };
 		A85DD61E1BC67198008D89EB /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A85DD6111BC67198008D89EB /* ofxSliderGroup.cpp */; settings = {ASSET_TAGS = (); }; };
 		A85DD61F1BC67198008D89EB /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A85DD6131BC67198008D89EB /* ofxToggle.cpp */; settings = {ASSET_TAGS = (); }; };
+		A8D262A81BC806EC006750C1 /* ofxFirstPersonCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8D262A01BC806EC006750C1 /* ofxFirstPersonCamera.cpp */; settings = {ASSET_TAGS = (); }; };
+		A8D262A91BC806EC006750C1 /* ofxImmediateModeInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8D262A41BC806EC006750C1 /* ofxImmediateModeInput.cpp */; settings = {ASSET_TAGS = (); }; };
 		A8EB87621BC673E2004650B8 /* BaseArch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8EB87611BC673E2004650B8 /* BaseArch.cpp */; settings = {ASSET_TAGS = (); }; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -90,13 +92,17 @@
 		A85DD6121BC67198008D89EB /* ofxSliderGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxSliderGroup.h; path = ../../../../openFrameworks/addons/ofxGui/src/ofxSliderGroup.h; sourceTree = "<group>"; };
 		A85DD6131BC67198008D89EB /* ofxToggle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxToggle.cpp; path = ../../../../openFrameworks/addons/ofxGui/src/ofxToggle.cpp; sourceTree = "<group>"; };
 		A85DD6141BC67198008D89EB /* ofxToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxToggle.h; path = ../../../../openFrameworks/addons/ofxGui/src/ofxToggle.h; sourceTree = "<group>"; };
+		A8D262A01BC806EC006750C1 /* ofxFirstPersonCamera.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxFirstPersonCamera.cpp; path = ../../../../openFrameworks/addons/ofxFirstPersonCamera/src/ofxFirstPersonCamera.cpp; sourceTree = "<group>"; };
+		A8D262A11BC806EC006750C1 /* ofxFirstPersonCamera.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxFirstPersonCamera.h; path = ../../../../openFrameworks/addons/ofxFirstPersonCamera/src/ofxFirstPersonCamera.h; sourceTree = "<group>"; };
+		A8D262A41BC806EC006750C1 /* ofxImmediateModeInput.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxImmediateModeInput.cpp; path = ../../../../openFrameworks/addons/ofxImmediateModeInput/src/ofxImmediateModeInput.cpp; sourceTree = "<group>"; };
+		A8D262A51BC806EC006750C1 /* ofxImmediateModeInput.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxImmediateModeInput.h; path = ../../../../openFrameworks/addons/ofxImmediateModeInput/src/ofxImmediateModeInput.h; sourceTree = "<group>"; };
 		A8EB87601BC673E2004650B8 /* BaseArch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = BaseArch.h; path = ../../bpii_Calibration/src/BaseArch.h; sourceTree = "<group>"; };
 		A8EB87611BC673E2004650B8 /* BaseArch.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = BaseArch.cpp; path = ../../bpii_Calibration/src/BaseArch.cpp; sourceTree = "<group>"; };
 		A94853AB33FE91A7200C1349 /* FeatureCollectionNode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 30; name = FeatureCollectionNode.h; path = src/FeatureCollectionNode.h; sourceTree = SOURCE_ROOT; };
 		BDC3EB0AEE46369A27A2E74A /* json-forwards.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "json-forwards.h"; path = "../../../../openFrameworks/addons/ofxJSON/libs/jsoncpp/include/json/json-forwards.h"; sourceTree = SOURCE_ROOT; };
 		DF47B7485B5CD5D2E2B93E7D /* FeatureNode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 30; name = FeatureNode.cpp; path = src/FeatureNode.cpp; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../../openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
-		E4B69B5B0A3A1756003C02F2 /* OSMJsonMapDrawDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMJsonMapDrawDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* OSMJsonMapFlyingDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMJsonMapFlyingDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 30; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 30; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
@@ -213,9 +219,47 @@
 			path = ../bpii_Calibration;
 			sourceTree = "<group>";
 		};
+		A8D262A21BC806EC006750C1 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A8D262A01BC806EC006750C1 /* ofxFirstPersonCamera.cpp */,
+				A8D262A11BC806EC006750C1 /* ofxFirstPersonCamera.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		A8D262A31BC806EC006750C1 /* ofxFirstPersonCamera */ = {
+			isa = PBXGroup;
+			children = (
+				A8D262A21BC806EC006750C1 /* src */,
+			);
+			name = ofxFirstPersonCamera;
+			path = ../FlyCam;
+			sourceTree = "<group>";
+		};
+		A8D262A61BC806EC006750C1 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A8D262A41BC806EC006750C1 /* ofxImmediateModeInput.cpp */,
+				A8D262A51BC806EC006750C1 /* ofxImmediateModeInput.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		A8D262A71BC806EC006750C1 /* ofxImmediateModeInput */ = {
+			isa = PBXGroup;
+			children = (
+				A8D262A61BC806EC006750C1 /* src */,
+			);
+			name = ofxImmediateModeInput;
+			path = ../FlyCam;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				A8D262A31BC806EC006750C1 /* ofxFirstPersonCamera */,
+				A8D262A71BC806EC006750C1 /* ofxImmediateModeInput */,
 				A85DD6031BC67198008D89EB /* ofxCsv */,
 				A85DD6161BC67198008D89EB /* ofxGui */,
 				2865DAEF86B1907A704CA70B /* ofxJSON */,
@@ -256,7 +300,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
-				E4B69B5B0A3A1756003C02F2 /* OSMJsonMapDrawDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* OSMJsonMapFlyingDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,9 +346,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* OSMJsonMapDraw */ = {
+		E4B69B5A0A3A1756003C02F2 /* OSMJsonMapFlying */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "OSMJsonMapDraw" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "OSMJsonMapFlying" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -316,9 +360,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = OSMJsonMapDraw;
+			name = OSMJsonMapFlying;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* OSMJsonMapDrawDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* OSMJsonMapFlyingDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -329,7 +373,7 @@
 			attributes = {
 				LastUpgradeCheck = 0600;
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OSMJsonMapDraw" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OSMJsonMapFlying" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -350,7 +394,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* OSMJsonMapDraw */,
+				E4B69B5A0A3A1756003C02F2 /* OSMJsonMapFlying */,
 			);
 		};
 /* End PBXProject section */
@@ -393,9 +437,11 @@
 				5C9CA4BFC796A8E17D387BAE /* FeatureCollectionNode.cpp in Sources */,
 				A85DD6181BC67198008D89EB /* ofxBaseGui.cpp in Sources */,
 				90EFE1B897A797B81ED960B9 /* FeatureLeafNode.cpp in Sources */,
+				A8D262A91BC806EC006750C1 /* ofxImmediateModeInput.cpp in Sources */,
 				A85DD61F1BC67198008D89EB /* ofxToggle.cpp in Sources */,
 				A85DD6171BC67198008D89EB /* ofxCsv.cpp in Sources */,
 				63E4B28AF5F75CA2F87A0758 /* FeatureNode.cpp in Sources */,
+				A8D262A81BC806EC006750C1 /* ofxFirstPersonCamera.cpp in Sources */,
 				8F8887A353D20A912E989043 /* JsonLoader.cpp in Sources */,
 				A85DD61C1BC67198008D89EB /* ofxPanel.cpp in Sources */,
 				9455F3F777137963C1194F60 /* ofxJSONElement.cpp in Sources */,
@@ -526,7 +572,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = OSMJsonMapDrawDebug;
+				PRODUCT_NAME = OSMJsonMapFlyingDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -559,7 +605,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = OSMJsonMapDrawDebug;
+				PRODUCT_NAME = OSMJsonMapFlyingDebug;
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};
@@ -568,7 +614,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OSMJsonMapDraw" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OSMJsonMapFlying" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -577,7 +623,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "OSMJsonMapDraw" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "OSMJsonMapFlying" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
