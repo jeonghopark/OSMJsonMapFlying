@@ -200,6 +200,8 @@ void ofApp::update(){
     
     roadMovingFactor_33975_22294 = roadMovingFactor_33975_22294 + 1;
     roadMoving_33975_22294 = sin( ofDegToRad(roadMovingFactor_33975_22294) ) * 0.5 + 0.5;
+    
+    
 }
 
 
@@ -209,6 +211,8 @@ void ofApp::draw(){
     //    ofEnableLighting();
     
     cam.begin();
+    
+    
     
     //    mainLight.enable();
     
@@ -246,20 +250,21 @@ void ofApp::draw(){
         
         buildingsPolyline_33975_22294[i].draw();
         
-        //        ofBeginShape();
-        //        vector<ofVec3f>& vertices = buildingsPolyline_33975_22294[i].getVertices();
-        //        for(int j = 0; j < vertices.size(); j++) {
-        //            ofVertex(vertices[j]);
-        //        }
-        //        ofEndShape();
-        //
-        //        ofBeginShape();
-        //        vector<ofVec3f>& verticesUp = buildingsPolyline_33975_22294[i].getVertices();
-        //        for(int j = 0; j < verticesUp.size(); j++) {
-        //            ofVec3f _v = verticesUp[j] + ofVec3f(0, 0, 100);
-        //            ofVertex(_v);
-        //        }
-        //        ofEndShape();
+//                ofBeginShape();
+//                vector<ofVec3f>& vertices = buildingsPolyline_33975_22294[i].getVertices();
+//                for(int j = 0; j < vertices.size(); j++) {
+//                    ofVertex(vertices[j]);
+//                }
+//                ofEndShape();
+//        
+//                ofBeginShape();
+//                vector<ofVec3f>& verticesUp = buildingsPolyline_33975_22294[i].getVertices();
+//                for(int j = 0; j < verticesUp.size(); j++) {
+//                    ofVec3f _v = verticesUp[j] + ofVec3f(0, 0, 100);
+//                    ofVertex(_v);
+//                }
+//                ofEndShape();
+        
     }
     ofPopStyle();
     
