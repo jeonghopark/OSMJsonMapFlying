@@ -17,6 +17,7 @@ void ofApp::setup(){
     cam.setNearClip(0.0001f);
     cam.setFarClip(10000.0f);
     cam.toggleControl();
+    cam.setPosition(0, 0, 700);
 
     
     mainOffSetXPos = (ofGetWidth() - (baseArch.fassadeCorner[0].x + baseArch.fassadeCorner[1].x)) * 0.5;
@@ -289,6 +290,9 @@ void ofApp::draw(){
     
     ofPopMatrix();
 
+    
+    ofDrawBitmapString("control : w, s, a, d, r, q, e, c, mouse", 10, 20);
+    
     
 }
 
