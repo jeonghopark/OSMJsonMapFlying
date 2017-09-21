@@ -22,7 +22,7 @@ FeatureLeafNode::FeatureLeafNode(ofMesh newGeometry) {
 
 FeatureLeafNode::FeatureLeafNode(ofMatrix4x4 newTransform) {
     
-    setTransformMatrix(newTransform);
+//    setTransformMatrix(newTransform);
     geometry = ofMesh();
     material = ofMaterial();
     idString = "";

@@ -22,7 +22,7 @@ FeatureCollectionNode::FeatureCollectionNode(vector<FeatureNode*> newChildren) {
 
 FeatureCollectionNode::FeatureCollectionNode(ofMatrix4x4 newTransform) {
     
-    setTransformMatrix(newTransform);
+//    setTransformMatrix(newTransform);
     children = vector<FeatureNode*>();
     
 }

@@ -1,15 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "GuiApp.h"
-#include "BaseArch.h"
 
 #include "ofxImmediateModeInput.h"
 #include "ofxFirstPersonCamera.h"
 
-
 #include "FeatureNode.h"
-
 #include "JsonLoader.h"
 
 #include "ofxJSON.h"
@@ -31,10 +27,6 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    
-    shared_ptr<GuiApp> gui;
-    
-    BaseArch baseArch;
     
     ofEasyCam camera;
     ofLight mainLight;

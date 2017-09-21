@@ -20,13 +20,6 @@ void ofApp::setup(){
     cam.setPosition(0, 0, 700);
 
     
-    mainOffSetXPos = (ofGetWidth() - (baseArch.fassadeCorner[0].x + baseArch.fassadeCorner[1].x)) * 0.5;
-    mainOffSetYPos = (ofGetHeight() - (baseArch.fassadeCorner[0].y + baseArch.fassadeCorner[3].y)) * 0.5;
-    baseArch.mainOffSetXPos = mainOffSetXPos;
-    baseArch.mainOffSetYPos = mainOffSetYPos;
-
-    
-    
     FeatureNode* _rootNode_33975_22294;
     
     JsonLoader _jsonLoader_33975_22294 = JsonLoader("OSMJSON.json");
@@ -66,7 +59,7 @@ void ofApp::setup(){
                     _coordinateBuilding = _jsonBuilding[j];
                     
                     
-                    ofVec2f _v;
+                    glm::vec3 _v;
                     _v.x = _jsonLoader_33975_22294.lon2x(_coordinateBuilding[0].asFloat()) - 740603;
                     _v.y = _jsonLoader_33975_22294.lat2y(_coordinateBuilding[1].asFloat()) - 6.40447e+06;
                     
@@ -119,7 +112,7 @@ void ofApp::setup(){
                     ofxJSONElement _coordinateRoad;
                     _coordinateRoad = _jsonRoad[j];
                     
-                    ofVec2f _v;
+                    glm::vec3 _v;
                     _v.x = _jsonLoader_33975_22294.lon2x(_jsonRoad[j][0].asFloat()) - 740603;
                     _v.y = _jsonLoader_33975_22294.lat2y(_jsonRoad[j][1].asFloat()) - 6.40447e+06;
                     
@@ -279,17 +272,6 @@ void ofApp::draw(){
     
     
 
-    ofPushMatrix();
-    
-    ofTranslate( mainOffSetXPos, mainOffSetYPos );
-    
-    baseArch.guideFrames();
-    baseArch.drawEdgeCover( ofColor(0) );
-    baseArch.guideLines();
-    baseArch.guidePoints();
-    
-    ofPopMatrix();
-
     
     ofDrawBitmapString("control : w, s, a, d, r, q, e, c, mouse", 10, 20);
     
@@ -329,11 +311,6 @@ void ofApp::mouseReleased(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
     
-    mainOffSetXPos = (ofGetWidth() - (baseArch.fassadeCorner[0].x + baseArch.fassadeCorner[1].x)) * 0.5;
-    mainOffSetYPos = (ofGetHeight() - (baseArch.fassadeCorner[0].y + baseArch.fassadeCorner[3].y)) * 0.5;
-    baseArch.mainOffSetXPos = mainOffSetXPos;
-    baseArch.mainOffSetYPos = mainOffSetYPos;
-
     
 }
 

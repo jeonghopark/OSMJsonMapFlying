@@ -1,1 +1,3 @@
+ofxFirstPersonCamera
+ofxImmediateModeInput
 ofxJSON

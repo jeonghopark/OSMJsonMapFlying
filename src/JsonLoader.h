@@ -27,8 +27,8 @@ public:
     FeatureNode* parseNode(ofxJSONElement nodeJson);
     FeatureCollectionNode* parseFeatureCollectionNode(ofxJSONElement collectionJson);
     FeatureNode* parseFeatureNode(ofxJSONElement featureJson);
-    ofVec3f parsePointInProjectedCoords(ofxJSONElement pointJson);
-    vector<ofVec3f> parsePointArrayInProjectedCoords(ofxJSONElement pointArrayJson);
+    glm::vec3 parsePointInProjectedCoords(ofxJSONElement pointJson);
+    vector<glm::vec3> parsePointArrayInProjectedCoords(ofxJSONElement pointArrayJson);
     
     double y2lat(double y) { return ofRadToDeg(2 * atan(exp(ofDegToRad(y))) - PI / 2); }
     double x2lon(double x) { return ofRadToDeg(x / R_EARTH); }
@@ -39,9 +39,9 @@ private:
     ofTessellator tessellator;
     ofColor layerColor;
     
-    ofVec3f getCentroidFromPoints(vector<ofVec3f> pts);
+    ofVec3f getCentroidFromPoints(vector<glm::vec3> pts);
     void parseLineGeometry(ofxJSONElement lineJson, ofxJSONElement propsJson, ofMesh* meshToFill, ofVec3f* anchor);
     void parsePolygonGeometry(ofxJSONElement polygonJson, ofxJSONElement propsJson, ofMesh* meshToFill, ofVec3f* anchor);
-    void movePoints(vector<ofVec3f> *pts, ofVec3f offset);
+    void movePoints(vector<glm::vec3> *pts, ofVec3f offset);
     
 };
