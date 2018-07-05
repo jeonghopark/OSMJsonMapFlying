@@ -182,13 +182,13 @@ void ofApp::update(){
     auto holded = in.keyHolded;
     auto pulled = in.keyPulled;
     
-    if( pushed[OF_KEY_LEFT_SHIFT] ) cam.movespeed = 7.0f;
-    if( pulled[OF_KEY_LEFT_SHIFT] ) cam.movespeed = 1.0f;
+    if( pushed[GLFW_KEY_LEFT_SHIFT] ) cam.movespeed = 7.0f;
+    if( pulled[GLFW_KEY_LEFT_SHIFT] ) cam.movespeed = 1.0f;
     
-    if( pushed[OF_MOUSE_BUTTON_LEFT] ) paint.push_back( ofPolyline() );
-    if( holded[OF_MOUSE_BUTTON_LEFT] ) paint.back().addVertex( cam.getPosition() + (cam.getLookAtDir() * 50.0f) );
+    if( pushed[GLFW_MOUSE_BUTTON_LEFT] ) paint.push_back( ofPolyline() );
+    if( holded[GLFW_MOUSE_BUTTON_LEFT] ) paint.back().addVertex( cam.getPosition() + (cam.getLookAtDir() * 50.0f) );
     
-    if( pushed[OF_MOUSE_BUTTON_RIGHT] ) cam.toggleControl();
+    if( pushed[GLFW_MOUSE_BUTTON_RIGHT] ) cam.toggleControl();
 
     
     roadMovingFactor_33975_22294 = roadMovingFactor_33975_22294 + 1;
