@@ -8,10 +8,9 @@ int main( ){
     
     ofGLFWWindowSettings settings;
     
-    settings.width = 1280;  // 1920
-    settings.height = 720;  // 1080
+    settings.setSize(1280, 720);
     settings.resizable = true;
-    settings.setPosition( ofVec2f(settings.width, 0 ));
+    settings.setPosition( ofVec2f(0, 0 ));
     //    settings.windowMode = OF_FULLSCREEN;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
     
